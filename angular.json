@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "weatherapp"
+    }
+  },
+  "defaultProject": "weatherapp",
+  "cli": {
+    "analytics": false
+  }
 }
