@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {first} from 'rxjs/operators';
+import {first, map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,8 @@ export class WeatherService {
   }
 
   getWeather(city: string): Observable<any> {
-    return this.http.get(
-      `${this.weatherURL}${city}&APPID=${this.appID}`).pipe((first()));
+    return this.http.get(`${this.weatherURL}${city}&APPID=${this.appID}`)
+      .pipe((first()))
+      .pipe(map(payload => payload[0].weather[0].main));
   }
 }
