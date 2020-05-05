@@ -1,11 +1,11 @@
-type WeatherResponse = {
+export type WeatherResponse = {
   id: number;
   main: string;
   description: string;
   icon: string;
 };
 
-type ForecastResponse = {
+export type ForecastResponse = {
   dt: number,
   main: {
     temp: number,
@@ -30,3 +30,8 @@ type ForecastResponse = {
   },
   dt_text: string
 };
+
+export type Unit = 'metric' | 'imperial';
+
+export const METRIC: Unit = 'metric';
+export const IMPERIAL: Unit = 'metric';

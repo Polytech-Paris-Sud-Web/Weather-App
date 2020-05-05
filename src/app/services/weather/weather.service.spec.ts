@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { WeatherService } from './weather.service';
 import {HttpClientModule} from '@angular/common/http';
+import {ForecastResponse, WeatherResponse} from '../../model/weather';
 
 describe('WeatherService', () => {
   let service: WeatherService;
