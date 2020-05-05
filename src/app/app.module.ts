@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule,ReactiveFormsModule }from'@angular/forms';
+import { FormsModule, ReactiveFormsModule }from'@angular/forms';
 
 import { NgModule } from '@angular/core';
 
@@ -13,8 +13,7 @@ import { DetailsComponent } from './pages/details/details.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,15 +23,13 @@ import { SignupComponent } from './pages/signup/signup.component';
     WeatherCardComponent,
     AddComponent,
     DetailsComponent,
-    
-    HomeComponent,
-    LoginComponent,
-    SignupComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

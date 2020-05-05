@@ -1,0 +1,26 @@
+.main__container {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 90vh;
+    position: relative;
+    justify-content: center;
+  }
+    
+app-weather-card, app-add-card {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+/*.clouds {*/
+/*position: absolute;*/
+/*z-index: 0;*/
+/*height: 10rem;*/
+/*right: -20rem;*/
+/*animation: moveacross 45s infinite;*/
+/*}*/
+
+/*@keyframes moveacross {*/
+/*100% {*/
+/*right: 100vw;*/
+/*}*/
+/*}*/
