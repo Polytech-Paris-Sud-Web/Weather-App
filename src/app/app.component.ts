@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   title = 'weatherapp';
   deferredPrompt: any;
   showButton = false;
+  showMenu = false;
   constructor(public router: Router, private swUpdate: SwUpdate) {
   }
   @HostListener('window:beforeinstallprompt', ['$event'])
@@ -22,6 +23,10 @@ export class AppComponent implements OnInit {
     // Stash the event so it can be triggered later.
     this.deferredPrompt = e;
     this.showButton = true;
+  }
+
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
   }
 
   addToHomeScreen() {
