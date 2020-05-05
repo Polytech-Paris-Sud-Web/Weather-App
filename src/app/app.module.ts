@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule,ReactiveFormsModule }from'@angular/forms';
+
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +24,7 @@ import { SignupComponent } from './pages/signup/signup.component';
     WeatherCardComponent,
     AddComponent,
     DetailsComponent,
+    
     HomeComponent,
     LoginComponent,
     SignupComponent
@@ -29,6 +32,7 @@ import { SignupComponent } from './pages/signup/signup.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
