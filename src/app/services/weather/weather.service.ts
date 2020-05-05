@@ -14,9 +14,9 @@ export class WeatherService {
   constructor(public http: HttpClient) {
   }
 
-  getWeather(city: string): Observable<any> {
+  getWeather(city: string): Observable<WeatherResponse> {
     return this.http.get(`${this.weatherURL}${city}&APPID=${this.appID}`)
       .pipe((first()))
-      .pipe(map(payload => payload[0].weather[0].main));
+      .pipe(map((payload: any) => payload.weather[0]));
   }
 }

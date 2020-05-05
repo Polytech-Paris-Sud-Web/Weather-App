@@ -15,8 +15,11 @@ describe('WeatherService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should success', async () => {
-    const response = await service.getWeather('London').toPromise();
-    expect(response.id).toEqual(1);
+  it('should weather response be correct', async () => {
+    const response: WeatherResponse = await service.getWeather('London').toPromise();
+    expect(response.description).toBeDefined();
+    expect(response.icon).toBeDefined();
+    expect(response.id).toBeDefined();
+    expect(response.main).toBeDefined();
   });
 });
