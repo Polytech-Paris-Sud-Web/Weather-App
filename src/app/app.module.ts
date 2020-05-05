@@ -10,6 +10,9 @@ import { AddComponent } from './pages/add/add.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { environment } from '../environments/environment';
     ErrorComponent,
     WeatherCardComponent,
     AddComponent,
-    DetailsComponent
+    DetailsComponent,
+    HomeComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
