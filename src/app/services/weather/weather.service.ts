@@ -8,14 +8,15 @@ import {first, map} from 'rxjs/operators';
 })
 export class WeatherService {
 
-  private readonly weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=';
+  private readonly weatherURL = 'https://api.openweathermap.org/data/2.5/weather';
+
   private readonly appID = '6cc51d73a359e8cb5411141a9f0cbcca';
 
   constructor(public http: HttpClient) {
   }
 
   getWeather(city: string): Observable<WeatherResponse> {
-    return this.http.get(`${this.weatherURL}${city}&APPID=${this.appID}`)
+    return this.http.get(`${this.weatherURL}?q=${city}&APPID=${this.appID}`)
       .pipe((first()))
       .pipe(map((payload: any) => payload.weather[0]));
   }
