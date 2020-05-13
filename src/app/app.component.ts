@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
+import { UiService } from './services/ui/ui.service';
+import { AuthenticationService } from './services/authentication/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +11,18 @@ import { SwUpdate } from '@angular/service-worker';
 })
 
 export class AppComponent implements OnInit {
-  title = 'weatherapp';
+  showMenu = false;
+  darkModeActive: boolean;
+  userEmail = '';
   deferredPrompt: any;
   showButton = false;
-  constructor(public router: Router, private swUpdate: SwUpdate) {
+  constructor(public ui: UiService, public auth: AuthenticationService,
+              public router: Router, private swUpdate: SwUpdate) {
   }
+
+  loggedIn = this.auth.isAuth();
+  sub1;
+
   @HostListener('window:beforeinstallprompt', ['$event'])
   onbeforeinstallprompt(e) {
     console.log(e);
@@ -56,5 +65,31 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.serviceWorkerCheck();
+    this.sub1 = this.ui.darkModeState.subscribe((value) => {
+      this.darkModeActive = value;
+    });
+
+    this.auth.auth.userData().subscribe((user) => {
+      this.userEmail = user.email;
+    });
   }
+
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
+  }
+
+  modeToggleSwitch() {
+    this.ui.darkModeState.next(!this.darkModeActive);
+  }
+
+  ngOnDestroy() {
+    this.sub1.unsubscribe();
+  }
+
+  logout() {
+    this.toggleMenu();
+    this.router.navigateByUrl('/login');
+    this.auth.auth.signout();
+  }
+
 }
