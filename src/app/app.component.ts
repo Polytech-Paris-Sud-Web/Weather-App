@@ -33,10 +33,6 @@ export class AppComponent implements OnInit {
     this.showButton = true;
   }
 
-  toggleMenu() {
-    this.showMenu = !this.showMenu;
-  }
-
   addToHomeScreen() {
     // hide our user interface that shows our A2HS button
     this.showButton = false;
