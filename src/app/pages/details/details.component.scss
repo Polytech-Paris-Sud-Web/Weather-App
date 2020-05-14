@@ -358,6 +358,10 @@
       padding-bottom: 0;
     }
   
+    .body-content__wrapper {
+      display: flex;
+      flex-direction: column-reverse;
+      overflow: initial !important;
+      max-height: initial !important;
+    }
   }
-  
-  
