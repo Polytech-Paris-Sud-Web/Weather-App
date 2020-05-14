@@ -3,8 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { WeatherService } from '../../services/weather/weather.service';
 import { forkJoin, Observable, Subscription } from 'rxjs';
 import { UiService } from '../../services/ui/ui.service';
-import { concatMap } from 'rxjs/operators';
+import { concatMap, map } from 'rxjs/operators';
 import { TweetService } from 'src/app/services/twitter/twitter.service';
+import { HttpClient } from '@angular/common/http';
 
 declare var require: any;
 
@@ -27,8 +28,8 @@ export class DetailsComponent implements OnInit {
   sub1: Subscription;
   sub2: Subscription;
   errorMessage: string;
-  tweets$: Observable<any>;
-  constructor(private twitter: TweetService, public activeRouter: ActivatedRoute, public weather: WeatherService, public ui: UiService) { }
+  article$: Observable<any>;
+  constructor(private http: HttpClient, private twitter: TweetService, public activeRouter: ActivatedRoute, public weather: WeatherService, public ui: UiService) { }
 
   ngOnInit() {
 
@@ -92,6 +93,8 @@ export class DetailsComponent implements OnInit {
         this.errorMessage = '';
       }, 2500);
     });
+    this.article$ = this.http.get(`http://newsapi.org/v2/everything?q=${this.city.toLowerCase()}&from=2020-04-14&sortBy=publishedAt&apiKey=f5af9e87ece248f99ced23773dd56782`)
+      .pipe(map((result: any) => result.articles));
   }
 
   ngOnDestroy() {
