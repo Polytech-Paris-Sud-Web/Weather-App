@@ -93,7 +93,7 @@ export class DetailsComponent implements OnInit {
         this.errorMessage = '';
       }, 2500);
     });
-    this.article$ = this.http.get(`http://newsapi.org/v2/everything?q=${this.city.toLowerCase()}&from=2020-04-14&sortBy=publishedAt&apiKey=f5af9e87ece248f99ced23773dd56782`)
+    this.article$ = this.http.get(`https://newsapi.org/v2/everything?q=${this.city.toLowerCase()}&from=2020-04-14&sortBy=publishedAt&apiKey=f5af9e87ece248f99ced23773dd56782`)
       .pipe(map((result: any) => result.articles));
   }
 
